@@ -12,7 +12,7 @@
 <br />
 <input type="text" id="test1">
 <button id="t" onclick='test()'> update json</button>
-
+<button onclick='led()'>led</button>
 </html>
 <script>
     function test() {
@@ -30,5 +30,8 @@
             body: data, // body data type must match "Content-Type" header
         }).then(response => response.json()); // parses response to JSON
 
+    }
+    function led(){
+        return fetch('/led')
     }
 </script>
