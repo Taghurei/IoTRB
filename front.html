@@ -1,0 +1,34 @@
+<html>
+<h2></h2>
+<h1>titre</h1>
+<p>Infos Led :</p>
+
+<iframe id='iframe' src='json'> </iframe>
+
+<form action="/json">
+    <button>get data</button>
+</form>
+<h2>Change data :</h2>
+<br />
+<input type="text" id="test1">
+<button id="t" onclick='test()'> updatsse json</button>
+
+</html>
+<script>
+    function test() {
+        let url = `/change`;
+        let data = test1.value
+        // Default options are marked with *
+        console.log((data))
+        return fetch(url, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.method: "POST", // *GET, POST, PUT, DELETE, etc.
+
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: data, // body data type must match "Content-Type" header
+        }).then(response => response.json()); // parses response to JSON
+
+    }
+</script>
