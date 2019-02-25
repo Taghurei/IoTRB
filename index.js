@@ -6,6 +6,7 @@ const router = express.Router();
 var fs = require('fs');
 const SerialPort = require('serialport')
 const serialport = new SerialPort("/dev/ttyACM1")
+serialport.write("e")
 
 /*const Readline = SerialPort.parsers.Readline
 const port = new SerialPort("/dev/ttyACM0")
