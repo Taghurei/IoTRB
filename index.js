@@ -5,15 +5,14 @@ const path = require('path');
 const router = express.Router();
 var fs = require('fs');
 const SerialPort = require('serialport')
-var serialPort = new SerialPort("/dev/ttyACM0");
 const Readline = SerialPort.parsers.Readline
 const port = new SerialPort("/dev/ttyACM0")
 const parser = new Readline()
 port.pipe(parser)
-parser.on('data', (data)=>{fs.writeFileSync('test.json', ((data)))})
+parser.on('data', (data) => { fs.writeFileSync('test.json', ((data))) })
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
- 
+
 // parse application/json
 app.use(express.json())
 router.get('/', function (req, res) {
@@ -26,11 +25,9 @@ router.get('/json', function (req, res) {
 });
 
 router.get('/led', function (req, res) {
-    console.log("led")
-    serialPort.write("255\n")
+    SerialPort.on("open", () => { console.log("led"), port.write("255\n") });
 });
-
-router.post('/change', function(req,res){
+router.post('/change', function (req, res) {
     console.log("postroute")
     console.log(req.body)
     fs.readFile('test.json');
