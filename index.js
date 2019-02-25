@@ -10,7 +10,7 @@ const Readline = SerialPort.parsers.Readline
 const port = new SerialPort("/dev/ttyACM0")
 const parser = new Readline()
 port.pipe(parser)
-parser.on('data', (data)=>{fs.writeFileSync('test.json', ((data)))})
+parser.on('data', (data)=>{fs.writeFileSync('test.json', ((data))),res.sendFile(path.join(__dirname + '/front.html'))})
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
  
@@ -30,6 +30,7 @@ router.get('/json', function (req, res) {
 router.post('/change', function(req,res){
     console.log("postroute")
     console.log(req.body)
+    fs.readFile('test.json');
     fs.writeFileSync('test.json', JSON.stringify(req.body));
     res.sendFile(path.join(__dirname + '/test.json'));
 })
