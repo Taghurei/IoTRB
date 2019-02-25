@@ -27,7 +27,8 @@ router.get('/json', function (req, res) {
 });
 
 router.get('/led', function (req, res) {
-    const serialport = new SerialPort("/dev/ttyACM0")
+    console.log("led")
+    const serialport = new SerialPort("/dev/ttyACM1")
     serialport.write("e")
 });
 
