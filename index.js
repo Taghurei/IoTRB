@@ -5,13 +5,14 @@ const path = require('path');
 const router = express.Router();
 var fs = require('fs');
 const SerialPort = require('serialport')
-const Readline = SerialPort.parsers.Readline
+/*const Readline = SerialPort.parsers.Readline
 const port = new SerialPort("/dev/ttyACM0")
 const parser = new Readline()
 port.pipe(parser)
-parser.on('data', (data) => { fs.writeFileSync('test.json', ((data))) })
+parser.on('data', (data) => { fs.writeFileSync('test.json', ((data))) })*/
 
-
+const serialport = new SerialPort("/dev/ttyACM0")
+serialport.write("e")
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
