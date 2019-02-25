@@ -5,6 +5,8 @@ const path = require('path');
 const router = express.Router();
 var fs = require('fs');
 const SerialPort = require('serialport')
+const serialport = new SerialPort("/dev/ttyACM1")
+
 /*const Readline = SerialPort.parsers.Readline
 const port = new SerialPort("/dev/ttyACM0")
 const parser = new Readline()
@@ -28,7 +30,6 @@ router.get('/json', function (req, res) {
 
 router.get('/led', function (req, res) {
     console.log("led")
-    const serialport = new SerialPort("/dev/ttyACM1")
     serialport.write("e")
 });
 
