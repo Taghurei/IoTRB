@@ -11,8 +11,7 @@ const parser = new Readline()
 port.pipe(parser)
 parser.on('data', (data) => { fs.writeFileSync('test.json', ((data))) })*/
 
-const serialport = new SerialPort("/dev/ttyACM0")
-serialport.write("e")
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -28,16 +27,8 @@ router.get('/json', function (req, res) {
 });
 
 router.get('/led', function (req, res) {
-    serialPort.on("open", function () {
-        console.log("open");
-        serialPort.on("data", function (data) {
-            console.log("data received: " + data);
-        });
-        serialPort.write("SYST:ADDR?\n", function (err, results) {
-            console.log("err: " + err);
-            console.log("results: " + results);
-        });
-    });
+    const serialport = new SerialPort("/dev/ttyACM0")
+    serialport.write("e")
 });
 
 router.post('/change', function (req, res) {
