@@ -10,7 +10,7 @@ const Readline = SerialPort.parsers.Readline
 const port = new SerialPort("/dev/ttyACM0")
 const parser = new Readline()
 port.pipe(parser)
-parser.on('data', (data)=>{fs.writeFileSync('test.json', ((data))),res.sendFile(path.join(__dirname + '/front.html'))})
+parser.on('data', (data)=>{fs.writeFileSync('test.json', ((data)))})
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
  
